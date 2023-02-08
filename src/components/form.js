@@ -3,7 +3,9 @@ import {Text, TextInput, View, StyleSheet}  from 'react-native'
 import  RNPickerSelect from 'react-native-picker-select'
 import colors from '../utils/colors'
 
-export default function  Form ()  {
+export default function  Form (props)  {
+  // console.log(props);
+  const {setCantidad, setInteres, setPlazos} = props
   return (
    <>
     <View  style={styles.viewForm}>
@@ -11,23 +13,33 @@ export default function  Form ()  {
         <TextInput placeholder='cantidad a pedir'
         keyboardType='numeric'
         style={styles.inputs}
+        onChange={(e)=>setCantidad(e.nativeEvent.text)}
         />
         <TextInput
         placeholder='Interes %'
         keyboardType='numeric'
         style={[styles.inputs,{width:'40%', marginLeft:5}]}
+        onChange={(e)=>setInteres(e.nativeEvent.text)}
+
         />
       </View>   
         <RNPickerSelect
-            onValueChange={(value) => console.log(value)}
+        style={selectStyle}
+
+        placeholder={{
+          label:'selecciona los meses...',
+          value:null,
+        }}
+        useNativeAndroidPickerStyle={false}
+            onValueChange={(value) => setPlazos(value)}
             items={[
-                { label: 'Football', value: 'football' },
-                { label: 'Baseball', value: 'baseball' },
-                { label: 'Hockey', value: 'hockey' },
+                { label: '3 meses', value: '3' },
+                { label: '6 meses', value: '6' },
+                { label: '12 meses', value: '12' },
+                { label: '24 meses', value: '24' },
             ]}
         />
 
-      <Text>SELECT</Text>    
     </View>
     </>
    
@@ -45,6 +57,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         borderBottomLeftRadius:30,
         borderBottomRightRadius:30,
+        position:'absolute'
     },
     viweInputs:{
         flexDirection:'row' 
@@ -63,5 +76,31 @@ const styles = StyleSheet.create({
         // position:'absolute',
         height:50,
     }
+})
+
+const selectStyle = StyleSheet.create({
+  inputAndroid:{
+    backgroundColor:'#FFF',
+    marginTop:10,
+    fontSize:16,
+    padding:10,
+    borderWidth:0.5,
+    borderColor:"C_PRMARIO_Ro",
+    borderRadius:6,
+    paddingRight:25,
+    color:'black'
+  },
+  inputIOS:{
+    backgroundColor:'#FFF',
+    marginTop:10,
+    fontSize:16,
+    padding:10,
+    borderWidth:0.5,
+    borderColor:"C_PRMARIO_Ro",
+    borderRadius:6,
+    paddingRight:25,
+    color:'black',
+
+  }
 })
 
