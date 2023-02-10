@@ -4,14 +4,31 @@ import colors from './src/utils/colors'
 import  Form   from './src/components/form';
 import { useState } from 'react';
 import BtnCalculate from './src/components/BtnCalculate';
+import Results from './src/components/Results';
 
 export default function App() {
   const [cantidad, setCantidad] = useState(null)
   const [interes, setInteres] = useState(null)
   const [plazos, setPlazos] = useState(null)
   const [prestamo, setPrestamo] = useState(null)
+  const [errors, setErrors] = useState('')
+
+  const reset = ()=>{
+    setErrors('');
+    setPrestamo('')
+  }
+
   const calcular = ()=>{
-    const inte = interes/100
+    reset();
+    if(!cantidad){
+      setErrors('Ingresa la Cantidad');
+
+    }else if(!interes){
+      setErrors('Ingresa el ineteres');
+    }else if(!plazos){
+      setErrors('Ingresas los plazos');
+    } else {
+      const inte = interes/100
     const pagos = cantidad /((1- Math.pow(inte+1,-plazos))/inte)
     setPrestamo({
       pagoMes:pagos.toFixed(2),
@@ -19,11 +36,10 @@ export default function App() {
 
     })
     console.log(prestamo);
+    }
+    
   }
-
   return (
- 
- 
     <>
        <StatusBar barStyle={'light-content'}/>
 
@@ -37,8 +53,9 @@ export default function App() {
        setPlazos={setPlazos}
        />
       </SafeAreaView>
+        <Results errors={errors} cantidad={cantidad} interes={interes} plazos={plazos} prestamo={prestamo}/>
+
        <BtnCalculate fncal={calcular}/>
-      
     </>
     
   );

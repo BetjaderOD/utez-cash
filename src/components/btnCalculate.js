@@ -9,7 +9,6 @@ const { fncal } = props
     <View style={styles.viewCalculate}>
       <TouchableOpacity style={styles.touchable}
       onPress={fncal}
-      
       >
       <Text style={styles.btnTitle}>Calcular</Text>
       </TouchableOpacity>
