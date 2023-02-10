@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         marginRight:4,
         paddingLeft:20,
         paddingRight:20,
-        color:'black',
+        color:colors.C_PRMARIO_Ro,
         // position:'absolute',
         height:50,
     }
@@ -85,7 +85,7 @@ const selectStyle = StyleSheet.create({
     fontSize:16,
     padding:10,
     borderWidth:0.5,
-    borderColor:"C_PRMARIO_Ro",
+    borderColor:colors.C_PRMARIO_Ro,
     borderRadius:6,
     paddingRight:25,
     color:'black'
@@ -96,7 +96,7 @@ const selectStyle = StyleSheet.create({
     fontSize:16,
     padding:10,
     borderWidth:0.5,
-    borderColor:"C_PRMARIO_Ro",
+    borderColor:colors.C_PRMARIO_Ro,
     borderRadius:6,
     paddingRight:25,
     color:'black',
