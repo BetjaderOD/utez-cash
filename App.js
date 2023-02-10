@@ -9,11 +9,18 @@ export default function App() {
   const [cantidad, setCantidad] = useState(null)
   const [interes, setInteres] = useState(null)
   const [plazos, setPlazos] = useState(null)
+  const [prestamo, setPrestamo] = useState(null)
   const calcular = ()=>{
-    console.log(`cant: ${cantidad}`);
-    console.log(`int: ${interes}`);
-    console.log(`pla: ${plazos}`);
+    const inte = interes/100
+    const pagos = cantidad /((1- Math.pow(inte+1,-plazos))/inte)
+    setPrestamo({
+      pagoMes:pagos.toFixed(2),
+      pagoTotal:(pagos * plazos).toFixed(2),
+
+    })
+    console.log(prestamo);
   }
+
   return (
  
  
